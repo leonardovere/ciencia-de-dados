@@ -23,6 +23,6 @@ def exibirGrafico():
     # Cria o gráfico
     plt.show()
 
-    # Salva o gráfico em forma de imagem
+    # Salva dentro do arquivo de imagem
     plt.savefig('chart.png')
 
