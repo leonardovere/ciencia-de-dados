@@ -1,36 +1,29 @@
 import matplotlib.pyplot as plt
+
+# Importa a biblioteca pandas
 import pandas as pd
 
 def exibirGrafico():
-    # Criar DataFrame
-    dados = {
-        "Categoria": ['Eletrônicos', 'Roupas', 'Alimentos', 'Móveis', 'Brinquedos'],
-        "Vendas": [15000, 12000, 18000, 9000, 7000]
-    }
+    # Cria o dataframe
+    df = pd.DataFrame({
+        "Meses": ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+        "Temperaturas": [29, 31, 30, 28, 27, 25, 21, 24, 27, 28, 29, 33]
+    })
 
-    df = pd.DataFrame(dados)
+    # Redimensionando o gráfico
+    plt.figure(figsize=[10.0, 5.0])
 
-    # Criar gráfico de barras
-    plt.figure(figsize=(8, 6))
-    plt.bar(
-        df['Categoria'],
-        df['Vendas'],
-        color=['yellow', 'red', 'green', 'blue', 'brown', 'purple']
-    )
+    # Criação do gráfico
+    plt.plot(df['Meses'], df['Temperaturas'], color="purple")
 
-    # Adicionar rótulos e título
-    plt.title('Vendas por Categoria de Produto')
-    plt.xlabel('Categoria')
-    plt.ylabel('Vendas')
-    plt.xticks(rotation=45) # Rotaciona 45° a label do eixo X
-    plt.grid(axis='both', linestyle='--', alpha=0.5)
+    # Definição dos títulos
+    plt.title("Temperaura média ao longo do tempo")
+    plt.xlabel("Meses")
+    plt.ylabel("Temperatura")
 
-    # Exibe dados estatísticos Para cada coluna
-    print('-' * 10 + 'Dados de Categorias' + '-' * 10)
-    print(df['Categoria'].describe())
-
-    print('-' * 10 + 'Dados de Vendas' + '-' * 10)
-    print(df['Vendas'].describe())
-
+    # Exibindo o gráfico
     plt.show()
     plt.savefig('chart2.png')
+
+    # Exibe no console dados estatísticos
+    print(f'Temperaturas: \n{df['Temperaturas'].describe()}')
