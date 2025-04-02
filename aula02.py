@@ -17,9 +17,9 @@ def exibirGrafico():
     plt.plot(df['Meses'], df['Temperaturas'], color="purple")
 
     # Definição dos títulos
-    plt.title("Temperaura média ao longo do tempo")
+    plt.title("Temperatura média ao longo do tempo")
     plt.xlabel("Meses")
-    plt.ylabel("Temperatura")
+    plt.ylabel("Temperaturas")
 
     # Exibindo o gráfico
     plt.show()
