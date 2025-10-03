@@ -14,3 +14,28 @@ print('-+-' * 50)
 # Fornecendo uma pré-análise dos dados para encontrar 
 # correlações fortes positivas/negativas ou sem correlação
 print(dados.corr().round(2))
+
+# Fazendo análise geral em pares
+sns.pairplot(dados)
+plt.show()
+plt.savefig('./aula08/pairplot.png')
+
+# Fazendo análise individual para correlação forte positiva
+# x -> Variável dependente (Mato Grosso) 
+# y -> Variável descritiva (Rondônia)
+sns.lmplot(data=dados, x='mato_grosso', y='rondonia') 
+plt.show()
+
+# Leitura: Conforme aumenta o desmatamento no Mato Grosso
+# Aumenta o desmatamento em Rondônia, onde a correlação de ambos é 0,93.
+plt.savefig('./aula08/lmplot-positivo.png')
+
+# Fazendo análise individual para correlação forte negativa
+# x -> Variável dependente (Referência)
+# y -> Variável explicativa (Tocantins)
+sns.jointplot(data=dados, x="referencia", y="tocantins", kind='reg') 
+plt.show()
+
+# Leitura: Conforme passam os anos, a área total desmatada
+# no Tocantins, dimínui, com uma correlação de -0,74.
+plt.savefig('./aula08/jointplot-negativo.png')
